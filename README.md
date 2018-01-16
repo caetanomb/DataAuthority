@@ -52,7 +52,7 @@ There are 3 endpoints Asp.net Web Api phisycally independent so that them can be
  - Open postman
  - inform DataAuthority.Base64Left.API's url + /v1/diff/ + {ID} + /Left, set action Post and inform the body content and click Send
  - inform DataAuthority.Base64Right.API's url + /v1/diff/ + {ID} + /Right, set action Post and inform the body content and click Send
- - To get the diff result, inform DataAuthority.Base64Right.API's url + /v1/diff/{ID}, set action Get and inform the body content and click Send
+ - To get the diff result, inform DataAuthority.Base64Right.API's url + /v1/diff/{ID}, set action Get and click Send
  
  
  
