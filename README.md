@@ -36,7 +36,7 @@ There are 3 endpoints Asp.net Web Api phisycally independent so that them can be
  - Visual Studio community 2017
  - .Net Core
  - Complemeting packages are downloaded in first build
- Postman
+ - Postman
  
 ## How to run
  - Open solution DataAuthority.sln from Visual Studio
@@ -45,7 +45,7 @@ There are 3 endpoints Asp.net Web Api phisycally independent so that them can be
       - DataAuthority.Base64Left.API
       - DataAuthority.Base64Right.API
       - DataAuthority.Base64Result.API
-      ![alt tag]()
+      ![alt tag](https://github.com/caetanomb/DataAuthority/blob/master/Solution%20Property.png)
  - Hit play button to boot the 3 APIs
  - 3 consoles hosts will get running
  - Each console shows its endpoint url
