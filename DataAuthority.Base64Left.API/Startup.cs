@@ -9,6 +9,7 @@ using DataAuthority.DataInfrastructure.Repositories;
 using DataAuthority.Domain.Event;
 using DataAuthority.Domain.Repository;
 using DataAuthority.SqlServerEF;
+using DataAuthority.SqlServerEF.Seed;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -54,14 +55,15 @@ namespace DataAuthority.Base64Left.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
+            app.UseDeveloperExceptionPage();
 
-                using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var service = serviceScope.ServiceProvider.GetRequiredService<DataAuthorityContext>();
+                if (!service.AllMigrationsApplied())
                 {
-                    var database = serviceScope.ServiceProvider.GetRequiredService<DataAuthorityContext>().Database;                    
-                    database.Migrate();
+                    service.Database.Migrate();
+                    service.EnsureSeeded();
                 }
             }
 

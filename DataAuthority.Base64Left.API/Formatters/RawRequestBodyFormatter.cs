@@ -13,7 +13,6 @@ namespace DataAuthority.Base64Left.API
         public RawRequestBodyFormatter()
         {
             SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/plain"));
-            SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/octet-stream"));
             SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
         }
 
@@ -22,8 +21,8 @@ namespace DataAuthority.Base64Left.API
             if (context == null) throw new ArgumentNullException(nameof(context));
 
             var contentType = context.HttpContext.Request.ContentType;
-            if (string.IsNullOrEmpty(contentType) || contentType == "text/plain" ||
-                contentType == "application/octet-stream" || contentType == "application/json")
+            if (string.IsNullOrEmpty(contentType) || contentType.Contains("text/plain") ||
+                contentType.Contains("application/json"))
                 return true;
 
             return false;
@@ -34,16 +33,23 @@ namespace DataAuthority.Base64Left.API
             var request = context.HttpContext.Request;
             var contentType = context.HttpContext.Request.ContentType;
 
-            if (string.IsNullOrEmpty(contentType) || contentType == "text/plain"
-                || contentType == "application/json")
+            if (string.IsNullOrEmpty(contentType) || contentType.Contains("text/plain") ||
+                contentType.Contains("application/json"))
             {
                 using (var reader = new StreamReader(request.Body))
                 {
                     var content = await reader.ReadToEndAsync();
+
+                    if (IsContentValidBase64(content))
+                    {
+                        byte[] data = Convert.FromBase64String(content);
+                        content = System.Text.Encoding.UTF8.GetString(data);
+                    }
+
                     content = RemoveUnnecessaryChar(content);
                     return await InputFormatterResult.SuccessAsync(content);
                 }
-            }                     
+            }
 
             return await InputFormatterResult.FailureAsync();
         }
@@ -53,6 +59,19 @@ namespace DataAuthority.Base64Left.API
             return content.Replace("\n", string.Empty)
                 .Replace("\t", string.Empty)
                 .Replace("\r", string.Empty);
+        }
+
+        private bool IsContentValidBase64(string content)
+        {
+            try
+            {                
+                Convert.FromBase64String(content);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DataAuthority.IntegrationTest": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

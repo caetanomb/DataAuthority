@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataAuthority.SqlServerEF;
+using DataAuthority.SqlServerEF.Seed;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -37,15 +38,16 @@ namespace DataAuthority.Base64Result.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
+            app.UseDeveloperExceptionPage();
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
-                app.UseDeveloperExceptionPage();
-                using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+                var service = serviceScope.ServiceProvider.GetRequiredService<DataAuthorityContext>();
+                if (!service.AllMigrationsApplied())
                 {
-                    var database = serviceScope.ServiceProvider.GetRequiredService<DataAuthorityContext>().Database;
-                    database.Migrate();
+                    service.Database.Migrate();
+                    service.EnsureSeeded();
                 }
-            }
+            }            
 
             app.UseMvc();
         }

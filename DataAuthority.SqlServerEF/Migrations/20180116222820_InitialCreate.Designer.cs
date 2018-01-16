@@ -11,7 +11,7 @@ using System;
 namespace DataAuthority.SqlServerEF.Migrations
 {
     [DbContext(typeof(DataAuthorityContext))]
-    [Migration("20180115143057_InitialCreate")]
+    [Migration("20180116222820_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

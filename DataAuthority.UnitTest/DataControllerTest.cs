@@ -1,6 +1,6 @@
 ﻿using DataAuthority.ApplicationService.Commands;
-using DataAuthority.Base64Left.API.Controllers;
-using DataAuthority.Base64Left.API.ViewModel;
+using LeftEndpoint = DataAuthority.Base64Left.API.Controllers;
+using RightEndpoint = DataAuthority.Base64Right.API.Controllers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -20,26 +20,52 @@ namespace DataAuthority.UnitTest
         }
 
         [Fact]
-        public async Task Post_PayLoad_Success()
+        public async Task LeftEndpoint_Post_PayLoad_Success()
         {
             _mediatorMock.Setup(x => x.Send(It.IsAny<CreatePayLoadCommand>(), default(CancellationToken)))
                 .Returns(Task.FromResult(true));
 
 
-            DataController dataController = new DataController(_mediatorMock.Object);
+            LeftEndpoint.DataController dataController = new LeftEndpoint.DataController(_mediatorMock.Object);
             IActionResult actionResult = await dataController.Post(1, "{\"offset\": 3,\"lenght\": 2}");
 
             Assert.Equal(((CreatedAtActionResult)actionResult).StatusCode, (int)System.Net.HttpStatusCode.Created);
         }
 
         [Fact]
-        public async Task Post_PayLoad_BadRequest()
+        public async Task LeftEndpoint_Post_PayLoad_BadRequest()
         {
             _mediatorMock.Setup(x => x.Send(It.IsAny<CreatePayLoadCommand>(), default(CancellationToken)))
                 .Returns(Task.FromResult(false));
 
 
-            DataController dataController = new DataController(_mediatorMock.Object);
+            LeftEndpoint.DataController dataController = new LeftEndpoint.DataController(_mediatorMock.Object);
+            IActionResult actionResult = await dataController.Post(1, "{\"offset\": 3,\"lenght\": 2}");
+
+            Assert.Equal(((BadRequestResult)actionResult).StatusCode, (int)System.Net.HttpStatusCode.BadRequest);
+        }
+
+        [Fact]
+        public async Task RightEndpoint_Post_PayLoad_Success()
+        {
+            _mediatorMock.Setup(x => x.Send(It.IsAny<CreatePayLoadCommand>(), default(CancellationToken)))
+                .Returns(Task.FromResult(true));
+
+
+            RightEndpoint.DataController dataController = new RightEndpoint.DataController(_mediatorMock.Object);
+            IActionResult actionResult = await dataController.Post(1, "{\"offset\": 3,\"lenght\": 2}");
+
+            Assert.Equal(((CreatedAtActionResult)actionResult).StatusCode, (int)System.Net.HttpStatusCode.Created);
+        }
+
+        [Fact]
+        public async Task RightEndpoint_Post_PayLoad_BadRequest()
+        {
+            _mediatorMock.Setup(x => x.Send(It.IsAny<CreatePayLoadCommand>(), default(CancellationToken)))
+                .Returns(Task.FromResult(false));
+
+
+            RightEndpoint.DataController dataController = new RightEndpoint.DataController(_mediatorMock.Object);
             IActionResult actionResult = await dataController.Post(1, "{\"offset\": 3,\"lenght\": 2}");
 
             Assert.Equal(((BadRequestResult)actionResult).StatusCode, (int)System.Net.HttpStatusCode.BadRequest);

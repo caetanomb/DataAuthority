@@ -7,8 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.0.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
-    <PackageReference Include="Moq" Version="4.8.1" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
@@ -16,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataAuthority.Base64Left.API\DataAuthority.Base64Left.API.csproj" />
+    <ProjectReference Include="..\DataAuthority.Base64Result.API\DataAuthority.Base64Result.API.csproj" />
     <ProjectReference Include="..\DataAuthority.Base64Right.API\DataAuthority.Base64Right.API.csproj" />
     <ProjectReference Include="..\DataAuthority.Domain\DataAuthority.Domain.csproj" />
   </ItemGroup>
