@@ -30,6 +30,7 @@ There are 3 endpoints Asp.net Web Api phisycally independent so that them can be
   - DDD principles (Domain Event, rules kept inside Entities)
   - Inversion of Control
   - Dependency Injection
+  - Mediator
 ## Requirements to run
 
  - Visual Studio community 2017
