@@ -60,6 +60,11 @@ There are 3 endpoints Asp.net Web Api phisycally independent so that them can be
  ![alt tag](https://github.com/caetanomb/DataAuthority/blob/master/Post%20Json%20format%20data.png)
  ![alt tag](https://github.com/caetanomb/DataAuthority/blob/master/Post%20raw%20base64%20data.png)
  
- 
+## Unit tests
+ - No Database required
+
+## Integration tests
+ - Database and seed get set up in the boot
+ - In case of these tests get red, please execute them once at a time. Some concurrency problem I think
  
  
