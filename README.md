@@ -20,7 +20,7 @@ There are 3 endpoints Asp.net Web Api phisycally independent so that them can be
   - Functionality shall be under integration test
   - Documentation in code
   - Clear and to the point readme on usage
-  - endpoints that accepts JSON base64 encoded binary data
+  - 2 endpoints that accepts JSON base64 encoded binary data
 ### Architecure Overview
 ![alt tag](https://github.com/caetanomb/DataAuthority/blob/master/Architecture%20Overview.png)
 
@@ -54,6 +54,12 @@ There are 3 endpoints Asp.net Web Api phisycally independent so that them can be
  - inform DataAuthority.Base64Left.API's url + /v1/diff/ + {ID} + /Left, set action Post and inform the body content and click Send
  - inform DataAuthority.Base64Right.API's url + /v1/diff/ + {ID} + /Right, set action Post and inform the body content and click Send
  - To get the diff result, inform DataAuthority.Base64Right.API's url + /v1/diff/{ID}, set action Get and click Send
+ 
+## Screenshots
+ Post:
+ ![alt tag](https://github.com/caetanomb/DataAuthority/blob/master/Post%20Json%20format%20data.png)
+ ![alt tag](https://github.com/caetanomb/DataAuthority/blob/master/Post%20raw%20base64%20data.png)
+ 
  
  
  
