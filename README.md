@@ -13,6 +13,8 @@ There are 3 endpoints Asp.net Web Api phisycally independent so that them can be
   - If contents from A and B not of equal size just return that
   - If contents of same size provide insight in where the diffs are, actual diffs are not needed.
     - So mainly offsets + length in the data
+### Architecure Overview
+![alt tag](https://github.com/caetanomb/DataAuthority/blob/master/Architecture%20Overview.png)
 
 ## Requirements to run
 
