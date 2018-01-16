@@ -65,6 +65,6 @@ There are 3 endpoints Asp.net Web Api phisycally independent so that them can be
 
 ## Integration tests
  - Database and seed get set up in the boot
- - In case of these tests get red, please execute them once at a time. Some concurrency problem I think
+ - In case of these tests get red, please execute one by one. Some concurrency problem I think
  
  
