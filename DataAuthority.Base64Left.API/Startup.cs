@@ -57,6 +57,12 @@ namespace DataAuthority.Base64Left.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+                {
+                    var database = serviceScope.ServiceProvider.GetRequiredService<DataAuthorityContext>().Database;                    
+                    database.Migrate();
+                }
             }
 
             app.UseMvc();

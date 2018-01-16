@@ -40,6 +40,11 @@ namespace DataAuthority.Base64Result.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+                {
+                    var database = serviceScope.ServiceProvider.GetRequiredService<DataAuthorityContext>().Database;
+                    database.Migrate();
+                }
             }
 
             app.UseMvc();
