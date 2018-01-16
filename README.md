@@ -20,6 +20,7 @@ There are 3 endpoints Asp.net Web Api phisycally independent so that them can be
   - Functionality shall be under integration test
   - Documentation in code
   - Clear and to the point readme on usage
+  - endpoints that accepts JSON base64 encoded binary data
 ### Architecure Overview
 ![alt tag](https://github.com/caetanomb/DataAuthority/blob/master/Architecture%20Overview.png)
 
