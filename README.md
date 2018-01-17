@@ -20,6 +20,7 @@ There are 3 endpoints Asp.net Web Api phisycally independent so that them can be
   - Functionality shall be under integration test
   - Documentation in code
   - Clear and to the point readme on usage
+  - 2 endpoints that accepts JSON base64 encoded binary data
 ### Architecure Overview
 ![alt tag](https://github.com/caetanomb/DataAuthority/blob/master/Architecture%20Overview.png)
 
@@ -36,4 +37,35 @@ There are 3 endpoints Asp.net Web Api phisycally independent so that them can be
  - Visual Studio community 2017
  - .Net Core
  - Complemeting packages are downloaded in first build
+ - Postman
+ 
+## How to run
+ - Open solution DataAuthority.sln from Visual Studio
+ - Build Solution to restore packages
+ - Go to solution properties -> Startup Project menu -> Select Multiple startup projects -> set Start for:
+      - DataAuthority.Base64Left.API
+      - DataAuthority.Base64Right.API
+      - DataAuthority.Base64Result.API
+      ![alt tag](https://github.com/caetanomb/DataAuthority/blob/master/Solution%20Property.png)
+ - Hit play button to boot the 3 APIs
+ - 3 consoles hosts will get running
+ - Each console shows its endpoint url
+ - Open postman
+ - inform DataAuthority.Base64Left.API's url + /v1/diff/ + {ID} + /Left, set action Post and inform the body content and click Send
+ - inform DataAuthority.Base64Right.API's url + /v1/diff/ + {ID} + /Right, set action Post and inform the body content and click Send
+ - To get the diff result, inform DataAuthority.Base64Right.API's url + /v1/diff/{ID}, set action Get and click Send
+ 
+## Screenshots
+ Post:
+ ![alt tag](https://github.com/caetanomb/DataAuthority/blob/master/Post%20Json%20format%20data.png)
+ ![alt tag](https://github.com/caetanomb/DataAuthority/blob/master/Post%20raw%20base64%20data.png)
+ Response:
+ ![alt tag](https://github.com/caetanomb/DataAuthority/blob/master/Response%20diff%20result.png)
+## Unit tests
+ - No Database required
+
+## Integration tests
+ - Database and seed get set up in the boot
+ - In case of these tests get red, please execute one by one. Some concurrency problem I think
+ 
  
