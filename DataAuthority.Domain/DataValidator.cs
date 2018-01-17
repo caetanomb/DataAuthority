@@ -5,23 +5,16 @@ using System.Text;
 
 namespace DataAuthority.Domain
 {
+    /// <summary>
+    /// Entity knows how to diff two contents
+    /// </summary>
     public class DataValidator
     {        
         public string Data1 { get; private set; }
         public string Data2 { get; private set; }
 
         public DataValidator(string data1, string data2)
-        {
-            //try
-            //{
-            //    Convert.FromBase64String(Data1);
-            //    Convert.FromBase64String(Data2);
-            //}
-            //catch
-            //{
-            //    throw new DataAuthorityDomainException("Invalid Base64 data");
-            //}
-
+        {            
             Data1 = data1;
             Data2 = data2;
         }

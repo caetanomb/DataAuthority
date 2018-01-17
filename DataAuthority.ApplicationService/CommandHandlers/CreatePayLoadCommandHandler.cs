@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace DataAuthority.ApplicationService.CommandHandlers
 {
+    /// <summary>
+    /// Command triggered by API - Post Method - It stores the request content
+    /// </summary>
     public class CreatePayLoadCommandHandler : IRequestHandler<CreatePayLoadCommand, bool>
     {
         private readonly IDataAuthorityRepository _dataAuthorityRepository;

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace DataAuthority.Domain
 {
+    /// <summary>
+    /// Enitity represents diff result
+    /// </summary>
     public class DataDiffInsight
     {
         public string Result { get; internal set; }

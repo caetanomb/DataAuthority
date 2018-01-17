@@ -9,6 +9,9 @@ using Newtonsoft.Json;
 
 namespace DataAuthority.Base64Result.API.Controllers
 {
+    /// <summary>
+    /// Result endpoint - It only queries diff result and respond to the client
+    /// </summary>
     [Route("v1/diff")]
     public class ValuesController : Controller
     {

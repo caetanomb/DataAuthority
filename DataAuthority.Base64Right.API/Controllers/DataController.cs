@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DataAuthority.Base64Right.API.Controllers
 {
+    /// <summary>
+    /// Endpoint Right
+    /// </summary>
     [Route("v1/diff")]
     public class DataController : Controller
     {

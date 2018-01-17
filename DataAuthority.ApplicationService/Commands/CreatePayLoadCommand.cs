@@ -2,6 +2,9 @@
 
 namespace DataAuthority.ApplicationService.Commands
 {
+    /// <summary>
+    /// This DTO structure transports data to CreatePayLoadCommandHandler
+    /// </summary>
     public class CreatePayLoadCommand : IRequest<bool>
     {
         public int ProvidedPayLoadId { get; set; }

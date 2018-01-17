@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace DataAuthority.ApplicationService.DomainEventHandlers
 {
+    /// <summary>
+    /// Domain Event - When PayLoad entity gets instantiated Domain Model register this action to be executed in another time
+    /// </summary>
     public class PayLoadCreatedDomainEventHandler : INotificationHandler<PayLoadCreatedDomainEvent>
     {
         private readonly IDataAuthorityRepository _dataAuthorityRepository;

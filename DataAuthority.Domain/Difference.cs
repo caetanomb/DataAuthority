@@ -4,6 +4,9 @@ using System.Text;
 
 namespace DataAuthority.Domain
 {
+    /// <summary>
+    /// Entity represents the difference offset and length
+    /// </summary>
     public class Difference
     {
         public int OffSet { get; internal set; }

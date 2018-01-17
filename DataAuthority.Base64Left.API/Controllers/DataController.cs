@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DataAuthority.Base64Left.API.Controllers
 {
+    /// <summary>
+    /// Endpoint Left
+    /// </summary>
     [Route("v1/diff")]
     public class DataController : Controller
     {
@@ -19,8 +22,7 @@ namespace DataAuthority.Base64Left.API.Controllers
 
         // POST api/values
         [HttpPost]
-        [Route("{id}/Left")]
-        //, [FromBody]CreatePayLoadViewModel viewModel
+        [Route("{id}/Left")]        
         public async Task<IActionResult> Post(int id, [FromBody] string content)
         {
             if (content == null)
