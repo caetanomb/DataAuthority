@@ -59,7 +59,8 @@ There are 3 endpoints Asp.net Web Api phisycally independent so that them can be
  Post:
  ![alt tag](https://github.com/caetanomb/DataAuthority/blob/master/Post%20Json%20format%20data.png)
  ![alt tag](https://github.com/caetanomb/DataAuthority/blob/master/Post%20raw%20base64%20data.png)
- 
+ Response:
+ ![alt tag](https://github.com/caetanomb/DataAuthority/blob/master/Response%20diff%20result.png)
 ## Unit tests
  - No Database required
 
